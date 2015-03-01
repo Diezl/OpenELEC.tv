@@ -21,7 +21,7 @@ case "$LINUX" in
   amlogic)
 #    PKG_VERSION="amlogic-3.10-0e99726"
 #    PKG_URL="https://github.com/codesnake/linux-amlogic/releases/download/3.10-0e99726/$PKG_NAME-$PKG_VERSION.tar.xz"
-    PKG_VERSION="amlogic-2338ca2"
+    PKG_VERSION="amlogic-da9a2ac"
     PKG_URL="http://amlinux.ru/source/$PKG_NAME-$PKG_VERSION.tar.gz"
     ;;
   imx6)
