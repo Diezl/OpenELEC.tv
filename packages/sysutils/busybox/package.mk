@@ -207,6 +207,11 @@ post_install() {
   add_user root "$ROOT_PWD" 0 0 "Root User" "/storage" "/bin/sh"
   add_group root 0
   add_group users 100
+  add_user nobody x 999 999 "Nobody" "/" "/bin/sh"
+  add_group nobody 999
+
+  add_user nobody x 65534 65534 "Nobody" "/" "/bin/sh"
+  add_group nogroup 65534
 
   enable_service debug-shell.service
   enable_service shell.service
