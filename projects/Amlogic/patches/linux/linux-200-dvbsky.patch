@@ -1,7 +1,8 @@
-diff -urN a/drivers/media/dvb-frontends/Kconfig b/drivers/media/dvb-frontends/Kconfig
---- a/drivers/media/dvb-frontends/Kconfig	2013-04-29 08:36:01.000000000 +0800
-+++ b/drivers/media/dvb-frontends/Kconfig	2013-05-03 17:03:57.000000000 +0800
-@@ -200,6 +200,20 @@
+diff --git a/drivers/media/dvb-frontends/Kconfig b/drivers/media/dvb-frontends/Kconfig
+index 0e2ec6f..0ba4858 100644
+--- a/drivers/media/dvb-frontends/Kconfig
++++ b/drivers/media/dvb-frontends/Kconfig
+@@ -200,6 +200,20 @@ config DVB_CX24116
  	help
  	  A DVB-S/S2 tuner module. Say Y when you want to support this frontend.
  
@@ -22,9 +23,22 @@ diff -urN a/drivers/media/dvb-frontends/Kconfig b/drivers/media/dvb-frontends/Kc
  config DVB_SI21XX
  	tristate "Silicon Labs SI21XX based"
  	depends on DVB_CORE && I2C
-diff -urN a/drivers/media/dvb-frontends/m88dc2800.c b/drivers/media/dvb-frontends/m88dc2800.c
---- a/drivers/media/dvb-frontends/m88dc2800.c	1970-01-01 08:00:00.000000000 +0800
-+++ b/drivers/media/dvb-frontends/m88dc2800.c	2013-01-26 16:03:21.000000000 +0800
+diff --git a/drivers/media/dvb-frontends/Makefile b/drivers/media/dvb-frontends/Makefile
+index cebc0fa..56ab1d2 100644
+--- a/drivers/media/dvb-frontends/Makefile
++++ b/drivers/media/dvb-frontends/Makefile
+@@ -103,4 +103,5 @@ obj-$(CONFIG_DVB_RTL2830) += rtl2830.o
+ obj-$(CONFIG_DVB_RTL2832) += rtl2832.o
+ obj-$(CONFIG_DVB_M88RS2000) += m88rs2000.o
+ obj-$(CONFIG_DVB_AF9033) += af9033.o
+-
++obj-$(CONFIG_DVB_M88DS3103) += m88ds3103.o
++obj-$(CONFIG_DVB_M88DC2800) += m88dc2800.o
+diff --git a/drivers/media/dvb-frontends/m88dc2800.c b/drivers/media/dvb-frontends/m88dc2800.c
+new file mode 100644
+index 0000000..f876a11
+--- /dev/null
++++ b/drivers/media/dvb-frontends/m88dc2800.c
 @@ -0,0 +1,2124 @@
 +/*
 +    M88DC2800/M88TC2800  - DVB-C demodulator and tuner from Montage
@@ -2150,9 +2164,11 @@ diff -urN a/drivers/media/dvb-frontends/m88dc2800.c b/drivers/media/dvb-frontend
 +MODULE_AUTHOR("Max Nibble <nibble.max@gmail.com>");
 +MODULE_LICENSE("GPL");
 +MODULE_VERSION("1.00");
-diff -urN a/drivers/media/dvb-frontends/m88dc2800.h b/drivers/media/dvb-frontends/m88dc2800.h
---- a/drivers/media/dvb-frontends/m88dc2800.h	1970-01-01 08:00:00.000000000 +0800
-+++ b/drivers/media/dvb-frontends/m88dc2800.h	2013-01-26 14:57:32.000000000 +0800
+diff --git a/drivers/media/dvb-frontends/m88dc2800.h b/drivers/media/dvb-frontends/m88dc2800.h
+new file mode 100644
+index 0000000..577b19d
+--- /dev/null
++++ b/drivers/media/dvb-frontends/m88dc2800.h
 @@ -0,0 +1,43 @@
 +/*
 +    M88DC2800/M88TC2800  - DVB-C demodulator and tuner from Montage
@@ -2197,9 +2213,11 @@ diff -urN a/drivers/media/dvb-frontends/m88dc2800.h b/drivers/media/dvb-frontend
 +}
 +#endif /* CONFIG_DVB_M88DC2800 */
 +#endif /* M88DC2800_H */
-diff -urN a/drivers/media/dvb-frontends/m88ds3103.c b/drivers/media/dvb-frontends/m88ds3103.c
---- a/drivers/media/dvb-frontends/m88ds3103.c	1970-01-01 08:00:00.000000000 +0800
-+++ b/drivers/media/dvb-frontends/m88ds3103.c	2013-01-30 12:33:47.000000000 +0800
+diff --git a/drivers/media/dvb-frontends/m88ds3103.c b/drivers/media/dvb-frontends/m88ds3103.c
+new file mode 100644
+index 0000000..315809d
+--- /dev/null
++++ b/drivers/media/dvb-frontends/m88ds3103.c
 @@ -0,0 +1,1710 @@
 +/*
 +    Montage Technology M88DS3103/M88TS2022 - DVBS/S2 Satellite demod/tuner driver
@@ -3911,9 +3929,11 @@ diff -urN a/drivers/media/dvb-frontends/m88ds3103.c b/drivers/media/dvb-frontend
 +MODULE_DESCRIPTION("DVB Frontend module for Montage DS3103/TS2022 hardware");
 +MODULE_AUTHOR("Max nibble");
 +MODULE_LICENSE("GPL");
-diff -urN a/drivers/media/dvb-frontends/m88ds3103.h b/drivers/media/dvb-frontends/m88ds3103.h
---- a/drivers/media/dvb-frontends/m88ds3103.h	1970-01-01 08:00:00.000000000 +0800
-+++ b/drivers/media/dvb-frontends/m88ds3103.h	2013-01-30 12:33:51.000000000 +0800
+diff --git a/drivers/media/dvb-frontends/m88ds3103.h b/drivers/media/dvb-frontends/m88ds3103.h
+new file mode 100644
+index 0000000..c7b690e
+--- /dev/null
++++ b/drivers/media/dvb-frontends/m88ds3103.h
 @@ -0,0 +1,53 @@
 +/*
 +    Montage Technology M88DS3103/M88TS2022 - DVBS/S2 Satellite demod/tuner driver
@@ -3968,9 +3988,11 @@ diff -urN a/drivers/media/dvb-frontends/m88ds3103.h b/drivers/media/dvb-frontend
 +}
 +#endif /* CONFIG_DVB_M88DS3103 */
 +#endif /* M88DS3103_H */
-diff -urN a/drivers/media/dvb-frontends/m88ds3103_priv.h b/drivers/media/dvb-frontends/m88ds3103_priv.h
---- a/drivers/media/dvb-frontends/m88ds3103_priv.h	1970-01-01 08:00:00.000000000 +0800
-+++ b/drivers/media/dvb-frontends/m88ds3103_priv.h	2013-01-30 12:33:56.000000000 +0800
+diff --git a/drivers/media/dvb-frontends/m88ds3103_priv.h b/drivers/media/dvb-frontends/m88ds3103_priv.h
+new file mode 100644
+index 0000000..2838514
+--- /dev/null
++++ b/drivers/media/dvb-frontends/m88ds3103_priv.h
 @@ -0,0 +1,403 @@
 +/*
 +    Montage Technology M88DS3103/M88TS2022 - DVBS/S2 Satellite demod/tuner driver
@@ -4375,20 +4397,24 @@ diff -urN a/drivers/media/dvb-frontends/m88ds3103_priv.h b/drivers/media/dvb-fro
 +};
 +
 +#endif /* M88DS3103_PRIV_H */
-diff -urN a/drivers/media/dvb-frontends/Makefile b/drivers/media/dvb-frontends/Makefile
---- a/drivers/media/dvb-frontends/Makefile	2013-04-29 08:36:01.000000000 +0800
-+++ b/drivers/media/dvb-frontends/Makefile	2013-05-03 17:04:31.000000000 +0800
-@@ -103,4 +103,5 @@
- obj-$(CONFIG_DVB_RTL2832) += rtl2832.o
- obj-$(CONFIG_DVB_M88RS2000) += m88rs2000.o
- obj-$(CONFIG_DVB_AF9033) += af9033.o
--
-+obj-$(CONFIG_DVB_M88DS3103) += m88ds3103.o
-+obj-$(CONFIG_DVB_M88DC2800) += m88dc2800.o
-diff -urN a/drivers/media/pci/cx23885/cimax2.c b/drivers/media/pci/cx23885/cimax2.c
---- a/drivers/media/pci/cx23885/cimax2.c	2013-04-29 08:36:01.000000000 +0800
-+++ b/drivers/media/pci/cx23885/cimax2.c	2013-03-31 22:03:29.000000000 +0800
-@@ -415,7 +415,7 @@
+diff --git a/drivers/media/pci/cx23885/Kconfig b/drivers/media/pci/cx23885/Kconfig
+index b3688aa..e18e0fc 100644
+--- a/drivers/media/pci/cx23885/Kconfig
++++ b/drivers/media/pci/cx23885/Kconfig
+@@ -23,6 +23,8 @@ config VIDEO_CX23885
+ 	select DVB_STB6100 if MEDIA_SUBDRV_AUTOSELECT
+ 	select DVB_STV6110 if MEDIA_SUBDRV_AUTOSELECT
+ 	select DVB_CX24116 if MEDIA_SUBDRV_AUTOSELECT
++	select DVB_M88DS3103 if MEDIA_SUBDRV_AUTOSELECT
++	select DVB_M88DC2800 if MEDIA_SUBDRV_AUTOSELECT
+ 	select DVB_STV0900 if MEDIA_SUBDRV_AUTOSELECT
+ 	select DVB_DS3000 if MEDIA_SUBDRV_AUTOSELECT
+ 	select DVB_TS2020 if MEDIA_SUBDRV_AUTOSELECT
+diff --git a/drivers/media/pci/cx23885/cimax2.c b/drivers/media/pci/cx23885/cimax2.c
+index 16fa7ea..2b63f78 100644
+--- a/drivers/media/pci/cx23885/cimax2.c
++++ b/drivers/media/pci/cx23885/cimax2.c
+@@ -426,7 +426,7 @@ int netup_poll_ci_slot_status(struct dvb_ca_en50221 *en50221,
  	return state->status;
  }
  
@@ -4397,7 +4423,7 @@ diff -urN a/drivers/media/pci/cx23885/cimax2.c b/drivers/media/pci/cx23885/cimax
  {
  	struct netup_ci_state *state;
  	u8 cimax_init[34] = {
-@@ -464,6 +464,11 @@
+@@ -475,6 +475,11 @@ int netup_ci_init(struct cx23885_tsport *port)
  		goto err;
  	}
  
@@ -4409,7 +4435,7 @@ diff -urN a/drivers/media/pci/cx23885/cimax2.c b/drivers/media/pci/cx23885/cimax
  	port->port_priv = state;
  
  	switch (port->nr) {
-@@ -537,3 +542,19 @@
+@@ -548,3 +553,19 @@ void netup_ci_exit(struct cx23885_tsport *port)
  	dvb_ca_en50221_release(&state->ca);
  	kfree(state);
  }
@@ -4429,10 +4455,11 @@ diff -urN a/drivers/media/pci/cx23885/cimax2.c b/drivers/media/pci/cx23885/cimax
 +
 +	return 1;
 +}
-diff -urN a/drivers/media/pci/cx23885/cimax2.h b/drivers/media/pci/cx23885/cimax2.h
---- a/drivers/media/pci/cx23885/cimax2.h	2013-04-29 08:36:01.000000000 +0800
-+++ b/drivers/media/pci/cx23885/cimax2.h	2013-01-30 12:34:37.000000000 +0800
-@@ -41,7 +41,9 @@
+diff --git a/drivers/media/pci/cx23885/cimax2.h b/drivers/media/pci/cx23885/cimax2.h
+index 518744a..39f3db7 100644
+--- a/drivers/media/pci/cx23885/cimax2.h
++++ b/drivers/media/pci/cx23885/cimax2.h
+@@ -41,7 +41,9 @@ extern int netup_ci_slot_ts_ctl(struct dvb_ca_en50221 *en50221, int slot);
  extern int netup_ci_slot_status(struct cx23885_dev *dev, u32 pci_status);
  extern int netup_poll_ci_slot_status(struct dvb_ca_en50221 *en50221,
  						int slot, int open);
@@ -4443,10 +4470,11 @@ diff -urN a/drivers/media/pci/cx23885/cimax2.h b/drivers/media/pci/cx23885/cimax
 +extern int dvbsky_ci_slot_status(struct cx23885_dev *dev);
 +
  #endif
-diff -urN a/drivers/media/pci/cx23885/cx23885-cards.c b/drivers/media/pci/cx23885/cx23885-cards.c
---- a/drivers/media/pci/cx23885/cx23885-cards.c	2013-04-29 08:36:01.000000000 +0800
-+++ b/drivers/media/pci/cx23885/cx23885-cards.c	2013-05-03 17:34:46.000000000 +0800
-@@ -569,6 +569,34 @@
+diff --git a/drivers/media/pci/cx23885/cx23885-cards.c b/drivers/media/pci/cx23885/cx23885-cards.c
+index 7e923f8..7e4b637 100644
+--- a/drivers/media/pci/cx23885/cx23885-cards.c
++++ b/drivers/media/pci/cx23885/cx23885-cards.c
+@@ -569,6 +569,34 @@ struct cx23885_board cx23885_boards[] = {
  		.name		= "TeVii S471",
  		.portb		= CX23885_MPEG_DVB,
  	},
@@ -4481,7 +4509,7 @@ diff -urN a/drivers/media/pci/cx23885/cx23885-cards.c b/drivers/media/pci/cx2388
  	[CX23885_BOARD_PROF_8000] = {
  		.name		= "Prof Revolution DVB-S2 8000",
  		.portb		= CX23885_MPEG_DVB,
-@@ -605,7 +633,7 @@
+@@ -605,7 +633,7 @@ struct cx23885_board cx23885_boards[] = {
  				  CX25840_NONE1_CH3,
  			.amux   = CX25840_AUDIO6,
  		} },
@@ -4490,7 +4518,7 @@ diff -urN a/drivers/media/pci/cx23885/cx23885-cards.c b/drivers/media/pci/cx2388
  };
  const unsigned int cx23885_bcount = ARRAY_SIZE(cx23885_boards);
  
-@@ -818,6 +846,30 @@
+@@ -818,6 +846,30 @@ struct cx23885_subid cx23885_subids[] = {
  		.subdevice = 0x9022,
  		.card      = CX23885_BOARD_TEVII_S471,
  	}, {
@@ -4521,7 +4549,7 @@ diff -urN a/drivers/media/pci/cx23885/cx23885-cards.c b/drivers/media/pci/cx2388
  		.subvendor = 0x8000,
  		.subdevice = 0x3034,
  		.card      = CX23885_BOARD_PROF_8000,
-@@ -1224,7 +1276,7 @@
+@@ -1224,7 +1276,7 @@ void cx23885_gpio_setup(struct cx23885_dev *dev)
  		cx_set(GP0_IO, 0x00040004);
  		break;
  	case CX23885_BOARD_TBS_6920:
@@ -4530,7 +4558,7 @@ diff -urN a/drivers/media/pci/cx23885/cx23885-cards.c b/drivers/media/pci/cx2388
  		cx_write(MC417_CTL, 0x00000036);
  		cx_write(MC417_OEN, 0x00001000);
  		cx_set(MC417_RWD, 0x00000002);
-@@ -1394,9 +1446,84 @@
+@@ -1394,9 +1446,84 @@ void cx23885_gpio_setup(struct cx23885_dev *dev)
  		cx_set(GP0_IO, 0x00040004);
  		mdelay(60);
  		break;
@@ -4615,7 +4643,7 @@ diff -urN a/drivers/media/pci/cx23885/cx23885-cards.c b/drivers/media/pci/cx2388
  int cx23885_ir_init(struct cx23885_dev *dev)
  {
  	static struct v4l2_subdev_io_pin_config ir_rxtx_pin_cfg[] = {
-@@ -1482,6 +1609,23 @@
+@@ -1482,6 +1609,23 @@ int cx23885_ir_init(struct cx23885_dev *dev)
  		v4l2_subdev_call(dev->sd_cx25840, core, s_io_pin_config,
  				 ir_rx_pin_cfg_count, ir_rx_pin_cfg);
  		break;
@@ -4639,7 +4667,7 @@ diff -urN a/drivers/media/pci/cx23885/cx23885-cards.c b/drivers/media/pci/cx2388
  	case CX23885_BOARD_HAUPPAUGE_HVR1250:
  		if (!enable_885_ir)
  			break;
-@@ -1511,9 +1655,15 @@
+@@ -1511,9 +1655,15 @@ void cx23885_ir_fini(struct cx23885_dev *dev)
  		cx23888_ir_remove(dev);
  		dev->sd_ir = NULL;
  		break;
@@ -4656,7 +4684,7 @@ diff -urN a/drivers/media/pci/cx23885/cx23885-cards.c b/drivers/media/pci/cx2388
  	case CX23885_BOARD_MYGICA_X8507:
  		cx23885_irq_remove(dev, PCI_MSK_AV_CORE);
  		/* sd_ir is a duplicate pointer to the AV Core, just clear it */
-@@ -1556,6 +1706,12 @@
+@@ -1556,6 +1706,12 @@ void cx23885_ir_pci_int_enable(struct cx23885_dev *dev)
  		if (dev->sd_ir)
  			cx23885_irq_add_enable(dev, PCI_MSK_IR);
  		break;
@@ -4669,7 +4697,7 @@ diff -urN a/drivers/media/pci/cx23885/cx23885-cards.c b/drivers/media/pci/cx2388
  	case CX23885_BOARD_TERRATEC_CINERGY_T_PCIE_DUAL:
  	case CX23885_BOARD_TEVII_S470:
  	case CX23885_BOARD_HAUPPAUGE_HVR1250:
-@@ -1657,6 +1813,10 @@
+@@ -1657,6 +1813,10 @@ void cx23885_card_setup(struct cx23885_dev *dev)
  		ts1->ts_clk_en_val = 0x1; /* Enable TS_CLK */
  		ts1->src_sel_val   = CX23885_SRC_SEL_PARALLEL_MPEG_VIDEO;
  		break;
@@ -4680,7 +4708,7 @@ diff -urN a/drivers/media/pci/cx23885/cx23885-cards.c b/drivers/media/pci/cx2388
  	case CX23885_BOARD_TEVII_S470:
  	case CX23885_BOARD_TEVII_S471:
  	case CX23885_BOARD_DVBWORLD_2005:
-@@ -1694,6 +1854,22 @@
+@@ -1694,6 +1854,22 @@ void cx23885_card_setup(struct cx23885_dev *dev)
  		ts1->ts_clk_en_val = 0x1; /* Enable TS_CLK */
  		ts1->src_sel_val   = CX23885_SRC_SEL_PARALLEL_MPEG_VIDEO;
  		break;
@@ -4703,7 +4731,7 @@ diff -urN a/drivers/media/pci/cx23885/cx23885-cards.c b/drivers/media/pci/cx2388
  	case CX23885_BOARD_HAUPPAUGE_HVR1250:
  	case CX23885_BOARD_HAUPPAUGE_HVR1500:
  	case CX23885_BOARD_HAUPPAUGE_HVR1500Q:
-@@ -1749,6 +1925,12 @@
+@@ -1749,6 +1925,12 @@ void cx23885_card_setup(struct cx23885_dev *dev)
  	case CX23885_BOARD_MPX885:
  	case CX23885_BOARD_MYGICA_X8507:
  	case CX23885_BOARD_TERRATEC_CINERGY_T_PCIE_DUAL:
@@ -4716,10 +4744,11 @@ diff -urN a/drivers/media/pci/cx23885/cx23885-cards.c b/drivers/media/pci/cx2388
  	case CX23885_BOARD_AVERMEDIA_HC81R:
  		dev->sd_cx25840 = v4l2_i2c_new_subdev(&dev->v4l2_dev,
  				&dev->i2c_bus[2].i2c_adap,
-diff -urN a/drivers/media/pci/cx23885/cx23885-core.c b/drivers/media/pci/cx23885/cx23885-core.c
---- a/drivers/media/pci/cx23885/cx23885-core.c	2013-04-29 08:36:01.000000000 +0800
-+++ b/drivers/media/pci/cx23885/cx23885-core.c	2013-05-03 17:36:31.000000000 +0800
-@@ -1909,6 +1909,10 @@
+diff --git a/drivers/media/pci/cx23885/cx23885-core.c b/drivers/media/pci/cx23885/cx23885-core.c
+index 268654a..70fb504 100644
+--- a/drivers/media/pci/cx23885/cx23885-core.c
++++ b/drivers/media/pci/cx23885/cx23885-core.c
+@@ -1909,6 +1909,10 @@ static irqreturn_t cx23885_irq(int irq, void *dev_id)
  			(pci_status & PCI_MSK_GPIO0))
  		handled += altera_ci_irq(dev);
  
@@ -4730,7 +4759,7 @@ diff -urN a/drivers/media/pci/cx23885/cx23885-core.c b/drivers/media/pci/cx23885
  	if (ts1_status) {
  		if (cx23885_boards[dev->board].portb == CX23885_MPEG_DVB)
  			handled += cx23885_irq_ts(ts1, ts1_status);
-@@ -2144,6 +2148,8 @@
+@@ -2144,6 +2148,8 @@ static int cx23885_initdev(struct pci_dev *pci_dev,
  		cx23885_irq_add_enable(dev, PCI_MSK_GPIO1 | PCI_MSK_GPIO0);
  		break;
  	case CX23885_BOARD_NETUP_DUAL_DVB_T_C_CI_RF:
@@ -4739,9 +4768,10 @@ diff -urN a/drivers/media/pci/cx23885/cx23885-core.c b/drivers/media/pci/cx23885
  		cx23885_irq_add_enable(dev, PCI_MSK_GPIO0);
  		break;
  	}
-diff -urN a/drivers/media/pci/cx23885/cx23885-dvb.c b/drivers/media/pci/cx23885/cx23885-dvb.c
---- a/drivers/media/pci/cx23885/cx23885-dvb.c	2013-04-29 08:36:01.000000000 +0800
-+++ b/drivers/media/pci/cx23885/cx23885-dvb.c	2013-05-03 17:38:34.000000000 +0800
+diff --git a/drivers/media/pci/cx23885/cx23885-dvb.c b/drivers/media/pci/cx23885/cx23885-dvb.c
+index bb291c6..95309b0 100644
+--- a/drivers/media/pci/cx23885/cx23885-dvb.c
++++ b/drivers/media/pci/cx23885/cx23885-dvb.c
 @@ -51,6 +51,8 @@
  #include "stv6110.h"
  #include "lnbh24.h"
@@ -4751,49 +4781,16 @@ diff -urN a/drivers/media/pci/cx23885/cx23885-dvb.c b/drivers/media/pci/cx23885/
  #include "cimax2.h"
  #include "lgs8gxx.h"
  #include "netup-eeprom.h"
-@@ -64,8 +66,8 @@
- #include "stv0367.h"
- #include "drxk.h"
- #include "mt2063.h"
--#include "stv090x.h"
--#include "stb6100.h"
-+#include "stv090x.h"
-+#include "stb6100.h"
- #include "stb6100_cfg.h"
- #include "tda10071.h"
- #include "a8293.h"
-@@ -500,42 +502,130 @@
+@@ -500,21 +502,109 @@ static struct xc5000_config mygica_x8506_xc5000_config = {
  	.if_khz = 5380,
  };
  
--static struct stv090x_config prof_8000_stv090x_config = {
--	.device                 = STV0903,
--	.demod_mode             = STV090x_SINGLE,
--	.clk_mode               = STV090x_CLK_EXT,
--	.xtal                   = 27000000,
--	.address                = 0x6A,
--	.ts1_mode               = STV090x_TSMODE_PARALLEL_PUNCTURED,
--	.repeater_level         = STV090x_RPTLEVEL_64,
--	.adc1_range             = STV090x_ADC_2Vpp,
--	.diseqc_envelope_mode   = false,
--
--	.tuner_get_frequency    = stb6100_get_frequency,
--	.tuner_set_frequency    = stb6100_set_frequency,
--	.tuner_set_bandwidth    = stb6100_set_bandwidth,
--	.tuner_get_bandwidth    = stb6100_get_bandwidth,
--};
- 
--static struct stb6100_config prof_8000_stb6100_config = {
--	.tuner_address = 0x60,
--	.refclock = 27000000,
--};
--
--static int p8000_set_voltage(struct dvb_frontend *fe, fe_sec_voltage_t voltage)
++
 +/* bst control */
 +int bst_set_voltage(struct dvb_frontend *fe, fe_sec_voltage_t voltage)
- {
- 	struct cx23885_tsport *port = fe->dvb->priv;
- 	struct cx23885_dev *dev = port->dev;
++{
++	struct cx23885_tsport *port = fe->dvb->priv;
++	struct cx23885_dev *dev = port->dev;
 +	
 +	cx23885_gpio_enable(dev, GPIO_1, 1);
 +	cx23885_gpio_enable(dev, GPIO_0, 1);
@@ -4814,13 +4811,7 @@ diff -urN a/drivers/media/pci/cx23885/cx23885-dvb.c b/drivers/media/pci/cx23885/
 +	}
 +	return 0;
 +}
- 
--	if (voltage == SEC_VOLTAGE_18)
--		cx_write(MC417_RWD, 0x00001e00);
--	else if (voltage == SEC_VOLTAGE_13)
--		cx_write(MC417_RWD, 0x00001a00);
--	else
--		cx_write(MC417_RWD, 0x00001800);
++
 +int dvbsky_set_voltage_sec(struct dvb_frontend *fe, fe_sec_voltage_t voltage)
 +{
 +	struct cx23885_tsport *port = fe->dvb->priv;
@@ -4843,9 +4834,9 @@ diff -urN a/drivers/media/pci/cx23885/cx23885-dvb.c b/drivers/media/pci/cx23885/
 +		cx23885_gpio_clear(dev, GPIO_12);
 +		break;
 +	}
- 	return 0;
- }
- 
++	return 0;
++}
++
 +/* bestunar single dvb-s2 */
 +static struct m88ds3103_config bst_ds3103_config = {
 +	.demod_address = 0x68,
@@ -4882,7 +4873,21 @@ diff -urN a/drivers/media/pci/cx23885/cx23885-dvb.c b/drivers/media/pci/cx23885/
 +	.ts_mode = 3,	
 +};
 +
-+static struct stv090x_config prof_8000_stv090x_config = {
+ static struct stv090x_config prof_8000_stv090x_config = {
+-	.device                 = STV0903,
+-	.demod_mode             = STV090x_SINGLE,
+-	.clk_mode               = STV090x_CLK_EXT,
+-	.xtal                   = 27000000,
+-	.address                = 0x6A,
+-	.ts1_mode               = STV090x_TSMODE_PARALLEL_PUNCTURED,
+-	.repeater_level         = STV090x_RPTLEVEL_64,
+-	.adc1_range             = STV090x_ADC_2Vpp,
+-	.diseqc_envelope_mode   = false,
+-
+-	.tuner_get_frequency    = stb6100_get_frequency,
+-	.tuner_set_frequency    = stb6100_set_frequency,
+-	.tuner_set_bandwidth    = stb6100_set_bandwidth,
+-	.tuner_get_bandwidth    = stb6100_get_bandwidth,
 +        .device                 = STV0903,
 +        .demod_mode             = STV090x_SINGLE,
 +        .clk_mode               = STV090x_CLK_EXT,
@@ -4897,36 +4902,13 @@ diff -urN a/drivers/media/pci/cx23885/cx23885-dvb.c b/drivers/media/pci/cx23885/
 +        .tuner_set_frequency    = stb6100_set_frequency,
 +        .tuner_set_bandwidth    = stb6100_set_bandwidth,
 +        .tuner_get_bandwidth    = stb6100_get_bandwidth,
-+};
-+
-+static struct stb6100_config prof_8000_stb6100_config = {
-+	.tuner_address = 0x60,
-+	.refclock = 27000000,
-+};
-+
-+static int p8000_set_voltage(struct dvb_frontend *fe, fe_sec_voltage_t voltage)
-+{
-+	struct cx23885_tsport *port = fe->dvb->priv;
-+	struct cx23885_dev *dev = port->dev;
-+
-+	if (voltage == SEC_VOLTAGE_18)
-+		cx_write(MC417_RWD, 0x00001e00);
-+	else if (voltage == SEC_VOLTAGE_13)
-+		cx_write(MC417_RWD, 0x00001a00);
-+	else
-+		cx_write(MC417_RWD, 0x00001800);
-+	return 0;
-+}
-+
- static int cx23885_dvb_set_frontend(struct dvb_frontend *fe)
- {
- 	struct dtv_frontend_properties *p = &fe->dtv_property_cache;
-@@ -1250,23 +1340,79 @@
- 					&tevii_ds3000_config,
- 					&i2c_bus->i2c_adap);
+ };
+ 
+ static struct stb6100_config prof_8000_stb6100_config = {
+@@ -1254,6 +1344,62 @@ static int dvb_register(struct cx23885_tsport *port)
+ 				&tevii_ts2020_config, &i2c_bus->i2c_adap);
+ 		}
  		break;
--	case CX23885_BOARD_PROF_8000:
--		i2c_bus = &dev->i2c_bus[0];
 +	case CX23885_BOARD_BST_PS8512:
 +	case CX23885_BOARD_DVBSKY_S950:
 +		i2c_bus = &dev->i2c_bus[1];	
@@ -4953,17 +4935,7 @@ diff -urN a/drivers/media/pci/cx23885/cx23885-dvb.c b/drivers/media/pci/cx23885/
 +			break;
 +		}
 +		break;
- 
--		fe0->dvb.frontend = dvb_attach(stv090x_attach,
--						&prof_8000_stv090x_config,
--						&i2c_bus->i2c_adap,
--						STV090x_DEMODULATOR_0);
--		if (fe0->dvb.frontend != NULL) {
--			if (!dvb_attach(stb6100_attach,
--					fe0->dvb.frontend,
--					&prof_8000_stb6100_config,
--					&i2c_bus->i2c_adap))
--				goto frontend_detach;
++
 +	case CX23885_BOARD_DVBSKY_S950_CI:
 +		i2c_bus = &dev->i2c_bus[1];	
 +		fe0->dvb.frontend = dvb_attach(m88ds3103_attach,
@@ -4977,8 +4949,7 @@ diff -urN a/drivers/media/pci/cx23885/cx23885-dvb.c b/drivers/media/pci/cx23885/
 +					&dvbsky_dc2800_config,
 +					&i2c_bus->i2c_adap);
 +		break;
- 
--			fe0->dvb.frontend->ops.set_voltage = p8000_set_voltage;
++
 +	case CX23885_BOARD_DVBSKY_T9580:
 +		switch (port->nr) {
 +		/* port B */
@@ -4991,30 +4962,13 @@ diff -urN a/drivers/media/pci/cx23885/cx23885-dvb.c b/drivers/media/pci/cx23885/
 +		/* port C */
 +		case 2:
 +			break;
- 		}
- 		break;
-+				
-+	case CX23885_BOARD_PROF_8000:
-+		i2c_bus = &dev->i2c_bus[0];
-+
-+		fe0->dvb.frontend = dvb_attach(stv090x_attach,
-+						&prof_8000_stv090x_config,
-+						&i2c_bus->i2c_adap,
-+						STV090x_DEMODULATOR_0);
-+		if (fe0->dvb.frontend != NULL) {
-+			if (!dvb_attach(stb6100_attach,
-+					fe0->dvb.frontend,
-+					&prof_8000_stb6100_config,
-+					&i2c_bus->i2c_adap))
-+				goto frontend_detach;
-+
-+			fe0->dvb.frontend->ops.set_voltage = p8000_set_voltage;
 +		}
 +		break;
- 	case CX23885_BOARD_HAUPPAUGE_HVR4400:
++				
+ 	case CX23885_BOARD_PROF_8000:
  		i2c_bus = &dev->i2c_bus[0];
- 		fe0->dvb.frontend = dvb_attach(tda10071_attach,
-@@ -1325,7 +1471,7 @@
+ 
+@@ -1329,7 +1475,7 @@ static int dvb_register(struct cx23885_tsport *port)
  		printk(KERN_INFO "NetUP Dual DVB-S2 CI card port%d MAC=%pM\n",
  			port->nr, port->frontends.adapter.proposed_mac);
  
@@ -5023,7 +4977,7 @@ diff -urN a/drivers/media/pci/cx23885/cx23885-dvb.c b/drivers/media/pci/cx23885/
  		break;
  		}
  	case CX23885_BOARD_NETUP_DUAL_DVB_T_C_CI_RF: {
-@@ -1352,6 +1498,41 @@
+@@ -1356,6 +1502,41 @@ static int dvb_register(struct cx23885_tsport *port)
  		memcpy(port->frontends.adapter.proposed_mac, eeprom + 0xa0, 6);
  		break;
  		}
@@ -5065,7 +5019,7 @@ diff -urN a/drivers/media/pci/cx23885/cx23885-dvb.c b/drivers/media/pci/cx23885/
  	}
  
  	return ret;
-@@ -1434,6 +1615,8 @@
+@@ -1438,6 +1619,8 @@ int cx23885_dvb_unregister(struct cx23885_tsport *port)
  
  	switch (port->dev->board) {
  	case CX23885_BOARD_NETUP_DUAL_DVBS2_CI:
@@ -5074,37 +5028,11 @@ diff -urN a/drivers/media/pci/cx23885/cx23885-dvb.c b/drivers/media/pci/cx23885/
  		netup_ci_exit(port);
  		break;
  	case CX23885_BOARD_NETUP_DUAL_DVB_T_C_CI_RF:
-diff -urN a/drivers/media/pci/cx23885/cx23885.h b/drivers/media/pci/cx23885/cx23885.h
---- a/drivers/media/pci/cx23885/cx23885.h	2013-04-29 08:36:01.000000000 +0800
-+++ b/drivers/media/pci/cx23885/cx23885.h	2013-05-03 17:14:20.000000000 +0800
-@@ -94,6 +94,14 @@
- #define CX23885_BOARD_HAUPPAUGE_HVR4400        38
- #define CX23885_BOARD_AVERMEDIA_HC81R          39
- 
-+#define CX23885_BOARD_BASE_INDEX	       40
-+#define CX23885_BOARD_BST_PS8512	       (CX23885_BOARD_BASE_INDEX)
-+#define CX23885_BOARD_DVBSKY_S952	       (CX23885_BOARD_BASE_INDEX+1)
-+#define CX23885_BOARD_DVBSKY_S950	       (CX23885_BOARD_BASE_INDEX+2)
-+#define CX23885_BOARD_DVBSKY_S950_CI	       (CX23885_BOARD_BASE_INDEX+3)
-+#define CX23885_BOARD_DVBSKY_C2800E_CI	       (CX23885_BOARD_BASE_INDEX+4)
-+#define CX23885_BOARD_DVBSKY_T9580	       (CX23885_BOARD_BASE_INDEX+5)
-+
- #define GPIO_0 0x00000001
- #define GPIO_1 0x00000002
- #define GPIO_2 0x00000004
-@@ -231,7 +239,7 @@
- 	 */
- 	u32			clk_freq;
- 	struct cx23885_input    input[MAX_CX23885_INPUT];
--	int			ci_type; /* for NetUP */
-+	int			ci_type; /* 1 and 2 for NetUP, 3 for DVBSky. */
- 	/* Force bottom field first during DMA (888 workaround) */
- 	u32                     force_bff;
- };
-diff -urN a/drivers/media/pci/cx23885/cx23885-input.c b/drivers/media/pci/cx23885/cx23885-input.c
---- a/drivers/media/pci/cx23885/cx23885-input.c	2013-04-29 08:36:01.000000000 +0800
-+++ b/drivers/media/pci/cx23885/cx23885-input.c	2013-05-03 17:42:09.000000000 +0800
-@@ -89,6 +89,12 @@
+diff --git a/drivers/media/pci/cx23885/cx23885-input.c b/drivers/media/pci/cx23885/cx23885-input.c
+index 7875dfb..1d24b1d 100644
+--- a/drivers/media/pci/cx23885/cx23885-input.c
++++ b/drivers/media/pci/cx23885/cx23885-input.c
+@@ -89,6 +89,12 @@ void cx23885_input_rx_work_handler(struct cx23885_dev *dev, u32 events)
  	case CX23885_BOARD_TERRATEC_CINERGY_T_PCIE_DUAL:
  	case CX23885_BOARD_TEVII_S470:
  	case CX23885_BOARD_HAUPPAUGE_HVR1250:
@@ -5117,7 +5045,7 @@ diff -urN a/drivers/media/pci/cx23885/cx23885-input.c b/drivers/media/pci/cx2388
  	case CX23885_BOARD_MYGICA_X8507:
  		/*
  		 * The only boards we handle right now.  However other boards
-@@ -141,6 +147,12 @@
+@@ -141,6 +147,12 @@ static int cx23885_input_ir_start(struct cx23885_dev *dev)
  	case CX23885_BOARD_HAUPPAUGE_HVR1850:
  	case CX23885_BOARD_HAUPPAUGE_HVR1290:
  	case CX23885_BOARD_HAUPPAUGE_HVR1250:
@@ -5130,7 +5058,7 @@ diff -urN a/drivers/media/pci/cx23885/cx23885-input.c b/drivers/media/pci/cx2388
  	case CX23885_BOARD_MYGICA_X8507:
  		/*
  		 * The IR controller on this board only returns pulse widths.
-@@ -291,6 +303,18 @@
+@@ -291,6 +303,18 @@ int cx23885_input_init(struct cx23885_dev *dev)
  		/* A guess at the remote */
  		rc_map = RC_MAP_TEVII_NEC;
  		break;
@@ -5149,22 +5077,51 @@ diff -urN a/drivers/media/pci/cx23885/cx23885-input.c b/drivers/media/pci/cx2388
  	case CX23885_BOARD_MYGICA_X8507:
  		/* Integrated CX23885 IR controller */
  		driver_type = RC_DRIVER_IR_RAW;
-diff -urN a/drivers/media/pci/cx23885/Kconfig b/drivers/media/pci/cx23885/Kconfig
---- a/drivers/media/pci/cx23885/Kconfig	2013-04-29 08:36:01.000000000 +0800
-+++ b/drivers/media/pci/cx23885/Kconfig	2013-05-03 17:43:05.000000000 +0800
-@@ -23,6 +23,8 @@
- 	select DVB_STB6100 if MEDIA_SUBDRV_AUTOSELECT
- 	select DVB_STV6110 if MEDIA_SUBDRV_AUTOSELECT
+diff --git a/drivers/media/pci/cx23885/cx23885.h b/drivers/media/pci/cx23885/cx23885.h
+index 5687d3f..1f654ef 100644
+--- a/drivers/media/pci/cx23885/cx23885.h
++++ b/drivers/media/pci/cx23885/cx23885.h
+@@ -94,6 +94,14 @@
+ #define CX23885_BOARD_HAUPPAUGE_HVR4400        38
+ #define CX23885_BOARD_AVERMEDIA_HC81R          39
+ 
++#define CX23885_BOARD_BASE_INDEX	       40
++#define CX23885_BOARD_BST_PS8512	       (CX23885_BOARD_BASE_INDEX)
++#define CX23885_BOARD_DVBSKY_S952	       (CX23885_BOARD_BASE_INDEX+1)
++#define CX23885_BOARD_DVBSKY_S950	       (CX23885_BOARD_BASE_INDEX+2)
++#define CX23885_BOARD_DVBSKY_S950_CI	       (CX23885_BOARD_BASE_INDEX+3)
++#define CX23885_BOARD_DVBSKY_C2800E_CI	       (CX23885_BOARD_BASE_INDEX+4)
++#define CX23885_BOARD_DVBSKY_T9580	       (CX23885_BOARD_BASE_INDEX+5)
++
+ #define GPIO_0 0x00000001
+ #define GPIO_1 0x00000002
+ #define GPIO_2 0x00000004
+@@ -231,7 +239,7 @@ struct cx23885_board {
+ 	 */
+ 	u32			clk_freq;
+ 	struct cx23885_input    input[MAX_CX23885_INPUT];
+-	int			ci_type; /* for NetUP */
++	int			ci_type; /* 1 and 2 for NetUP, 3 for DVBSky. */
+ 	/* Force bottom field first during DMA (888 workaround) */
+ 	u32                     force_bff;
+ };
+diff --git a/drivers/media/pci/cx88/Kconfig b/drivers/media/pci/cx88/Kconfig
+index bb05eca..c613fa9 100644
+--- a/drivers/media/pci/cx88/Kconfig
++++ b/drivers/media/pci/cx88/Kconfig
+@@ -57,6 +57,7 @@ config VIDEO_CX88_DVB
+ 	select DVB_ISL6421 if MEDIA_SUBDRV_AUTOSELECT
+ 	select DVB_S5H1411 if MEDIA_SUBDRV_AUTOSELECT
  	select DVB_CX24116 if MEDIA_SUBDRV_AUTOSELECT
 +	select DVB_M88DS3103 if MEDIA_SUBDRV_AUTOSELECT
-+	select DVB_M88DC2800 if MEDIA_SUBDRV_AUTOSELECT
- 	select DVB_STV0900 if MEDIA_SUBDRV_AUTOSELECT
- 	select DVB_DS3000 if MEDIA_SUBDRV_AUTOSELECT
- 	select DVB_TS2020 if MEDIA_SUBDRV_AUTOSELECT
-diff -urN a/drivers/media/pci/cx88/cx88-cards.c b/drivers/media/pci/cx88/cx88-cards.c
---- a/drivers/media/pci/cx88/cx88-cards.c	2013-04-29 08:36:01.000000000 +0800
-+++ b/drivers/media/pci/cx88/cx88-cards.c	2013-05-03 17:06:55.000000000 +0800
-@@ -2309,6 +2309,18 @@
+ 	select DVB_STV0299 if MEDIA_SUBDRV_AUTOSELECT
+ 	select DVB_STV0288 if MEDIA_SUBDRV_AUTOSELECT
+ 	select DVB_STB6000 if MEDIA_SUBDRV_AUTOSELECT
+diff --git a/drivers/media/pci/cx88/cx88-cards.c b/drivers/media/pci/cx88/cx88-cards.c
+index a87a0e1..7bf9a91 100644
+--- a/drivers/media/pci/cx88/cx88-cards.c
++++ b/drivers/media/pci/cx88/cx88-cards.c
+@@ -2314,6 +2314,18 @@ static const struct cx88_board cx88_boards[] = {
  		} },
  		.mpeg           = CX88_MPEG_DVB,
  	},
@@ -5183,7 +5140,7 @@ diff -urN a/drivers/media/pci/cx88/cx88-cards.c b/drivers/media/pci/cx88/cx88-ca
  };
  
  /* ------------------------------------------------------------------ */
-@@ -2813,6 +2825,10 @@
+@@ -2818,6 +2830,10 @@ static const struct cx88_subid cx88_subids[] = {
  		.subvendor = 0x1822,
  		.subdevice = 0x0023,
  		.card      = CX88_BOARD_TWINHAN_VP1027_DVBS,
@@ -5194,7 +5151,7 @@ diff -urN a/drivers/media/pci/cx88/cx88-cards.c b/drivers/media/pci/cx88/cx88-ca
  	},
  };
  
-@@ -3547,6 +3563,12 @@
+@@ -3551,6 +3567,12 @@ static void cx88_card_setup(struct cx88_core *core)
  		cx_write(MO_SRST_IO, 1);
  		msleep(100);
  		break;
@@ -5207,9 +5164,10 @@ diff -urN a/drivers/media/pci/cx88/cx88-cards.c b/drivers/media/pci/cx88/cx88-ca
  	} /*end switch() */
  
  
-diff -urN a/drivers/media/pci/cx88/cx88-dvb.c b/drivers/media/pci/cx88/cx88-dvb.c
---- a/drivers/media/pci/cx88/cx88-dvb.c	2013-04-29 08:36:01.000000000 +0800
-+++ b/drivers/media/pci/cx88/cx88-dvb.c	2013-05-03 17:09:09.000000000 +0800
+diff --git a/drivers/media/pci/cx88/cx88-dvb.c b/drivers/media/pci/cx88/cx88-dvb.c
+index 053ed1b..36a6d3f 100644
+--- a/drivers/media/pci/cx88/cx88-dvb.c
++++ b/drivers/media/pci/cx88/cx88-dvb.c
 @@ -54,6 +54,7 @@
  #include "stv0288.h"
  #include "stb6000.h"
@@ -5218,7 +5176,7 @@ diff -urN a/drivers/media/pci/cx88/cx88-dvb.c b/drivers/media/pci/cx88/cx88-dvb.
  #include "stv0900.h"
  #include "stb6100.h"
  #include "stb6100_proc.h"
-@@ -459,6 +460,56 @@
+@@ -459,6 +460,56 @@ static int tevii_dvbs_set_voltage(struct dvb_frontend *fe,
  		return core->prev_set_voltage(fe, voltage);
  	return 0;
  }
@@ -5275,7 +5233,7 @@ diff -urN a/drivers/media/pci/cx88/cx88-dvb.c b/drivers/media/pci/cx88/cx88-dvb.
  
  static int vp1027_set_voltage(struct dvb_frontend *fe,
  				    fe_sec_voltage_t voltage)
-@@ -706,6 +757,11 @@
+@@ -706,6 +757,11 @@ static struct ts2020_config tevii_ts2020_config  = {
  	.clk_out_div = 1,
  };
  
@@ -5287,7 +5245,7 @@ diff -urN a/drivers/media/pci/cx88/cx88-dvb.c b/drivers/media/pci/cx88/cx88-dvb.
  static const struct stv0900_config prof_7301_stv0900_config = {
  	.demod_address = 0x6a,
  /*	demod_mode = 0,*/
-@@ -1477,6 +1533,35 @@
+@@ -1485,6 +1541,35 @@ static int dvb_register(struct cx8802_dev *dev)
  				&tevii_ts2020_config, &core->i2c_adap);
  			fe0->dvb.frontend->ops.set_voltage =
  							tevii_dvbs_set_voltage;
@@ -5323,21 +5281,11 @@ diff -urN a/drivers/media/pci/cx88/cx88-dvb.c b/drivers/media/pci/cx88/cx88-dvb.
  		}
  		break;
  	case CX88_BOARD_OMICOM_SS4_PCI:
-diff -urN a/drivers/media/pci/cx88/cx88.h b/drivers/media/pci/cx88/cx88.h
---- a/drivers/media/pci/cx88/cx88.h	2013-04-29 08:36:01.000000000 +0800
-+++ b/drivers/media/pci/cx88/cx88.h	2013-05-03 17:05:57.000000000 +0800
-@@ -238,6 +238,7 @@
- #define CX88_BOARD_WINFAST_DTV1800H_XC4000 88
- #define CX88_BOARD_WINFAST_TV2000_XP_GLOBAL_6F36 89
- #define CX88_BOARD_WINFAST_TV2000_XP_GLOBAL_6F43 90
-+#define CX88_BOARD_BST_PS8312              91
- 
- enum cx88_itype {
- 	CX88_VMUX_COMPOSITE1 = 1,
-diff -urN a/drivers/media/pci/cx88/cx88-input.c b/drivers/media/pci/cx88/cx88-input.c
---- a/drivers/media/pci/cx88/cx88-input.c	2013-04-29 08:36:01.000000000 +0800
-+++ b/drivers/media/pci/cx88/cx88-input.c	2013-01-26 14:52:03.000000000 +0800
-@@ -419,6 +419,10 @@
+diff --git a/drivers/media/pci/cx88/cx88-input.c b/drivers/media/pci/cx88/cx88-input.c
+index f29e18c..42a911c 100644
+--- a/drivers/media/pci/cx88/cx88-input.c
++++ b/drivers/media/pci/cx88/cx88-input.c
+@@ -419,6 +419,10 @@ int cx88_ir_init(struct cx88_core *core, struct pci_dev *pci)
  		rc_type          = RC_BIT_NEC;
  		ir->sampling     = 0xff00; /* address */
  		break;
@@ -5348,21 +5296,23 @@ diff -urN a/drivers/media/pci/cx88/cx88-input.c b/drivers/media/pci/cx88/cx88-in
  	}
  
  	if (!ir_codes) {
-diff -urN a/drivers/media/pci/cx88/Kconfig b/drivers/media/pci/cx88/Kconfig
---- a/drivers/media/pci/cx88/Kconfig	2013-04-29 08:36:01.000000000 +0800
-+++ b/drivers/media/pci/cx88/Kconfig	2013-05-03 17:10:41.000000000 +0800
-@@ -57,6 +57,7 @@
- 	select DVB_ISL6421 if MEDIA_SUBDRV_AUTOSELECT
- 	select DVB_S5H1411 if MEDIA_SUBDRV_AUTOSELECT
- 	select DVB_CX24116 if MEDIA_SUBDRV_AUTOSELECT
-+	select DVB_M88DS3103 if MEDIA_SUBDRV_AUTOSELECT
- 	select DVB_STV0299 if MEDIA_SUBDRV_AUTOSELECT
- 	select DVB_STV0288 if MEDIA_SUBDRV_AUTOSELECT
- 	select DVB_STB6000 if MEDIA_SUBDRV_AUTOSELECT
-diff -urN a/drivers/media/rc/keymaps/Makefile b/drivers/media/rc/keymaps/Makefile
---- a/drivers/media/rc/keymaps/Makefile	2013-04-29 08:36:01.000000000 +0800
-+++ b/drivers/media/rc/keymaps/Makefile	2013-05-03 17:43:41.000000000 +0800
-@@ -27,6 +27,7 @@
+diff --git a/drivers/media/pci/cx88/cx88.h b/drivers/media/pci/cx88/cx88.h
+index 51ce2c0..7f24cec 100644
+--- a/drivers/media/pci/cx88/cx88.h
++++ b/drivers/media/pci/cx88/cx88.h
+@@ -238,6 +238,7 @@ extern const struct sram_channel cx88_sram_channels[];
+ #define CX88_BOARD_WINFAST_DTV1800H_XC4000 88
+ #define CX88_BOARD_WINFAST_TV2000_XP_GLOBAL_6F36 89
+ #define CX88_BOARD_WINFAST_TV2000_XP_GLOBAL_6F43 90
++#define CX88_BOARD_BST_PS8312              91
+ 
+ enum cx88_itype {
+ 	CX88_VMUX_COMPOSITE1 = 1,
+diff --git a/drivers/media/rc/keymaps/Makefile b/drivers/media/rc/keymaps/Makefile
+index 5ab94ea..279d165 100644
+--- a/drivers/media/rc/keymaps/Makefile
++++ b/drivers/media/rc/keymaps/Makefile
+@@ -27,6 +27,7 @@ obj-$(CONFIG_RC_MAP) += rc-adstech-dvb-t-pci.o \
  			rc-dm1105-nec.o \
  			rc-dntv-live-dvb-t.o \
  			rc-dntv-live-dvbt-pro.o \
@@ -5370,9 +5320,11 @@ diff -urN a/drivers/media/rc/keymaps/Makefile b/drivers/media/rc/keymaps/Makefil
  			rc-em-terratec.o \
  			rc-encore-enltv2.o \
  			rc-encore-enltv.o \
-diff -urN a/drivers/media/rc/keymaps/rc-dvbsky.c b/drivers/media/rc/keymaps/rc-dvbsky.c
---- a/drivers/media/rc/keymaps/rc-dvbsky.c	1970-01-01 08:00:00.000000000 +0800
-+++ b/drivers/media/rc/keymaps/rc-dvbsky.c	2013-01-26 14:52:49.000000000 +0800
+diff --git a/drivers/media/rc/keymaps/rc-dvbsky.c b/drivers/media/rc/keymaps/rc-dvbsky.c
+new file mode 100644
+index 0000000..bfc41fb
+--- /dev/null
++++ b/drivers/media/rc/keymaps/rc-dvbsky.c
 @@ -0,0 +1,78 @@
 +/* rc-dvbsky.c - Keytable for Dvbsky Remote Controllers
 + *
@@ -5452,9 +5404,40 @@ diff -urN a/drivers/media/rc/keymaps/rc-dvbsky.c b/drivers/media/rc/keymaps/rc-d
 +
 +MODULE_LICENSE("GPL");
 +MODULE_AUTHOR("Nibble Max <nibble.max@gmail.com>");
-diff -urN a/drivers/media/usb/dvb-usb-v2/dvbsky.c b/drivers/media/usb/dvb-usb-v2/dvbsky.c
---- a/drivers/media/usb/dvb-usb-v2/dvbsky.c	1970-01-01 08:00:00.000000000 +0800
-+++ b/drivers/media/usb/dvb-usb-v2/dvbsky.c	2013-05-03 17:47:38.000000000 +0800
+diff --git a/drivers/media/usb/dvb-usb-v2/Kconfig b/drivers/media/usb/dvb-usb-v2/Kconfig
+index a3c8ecf..cfb9810 100644
+--- a/drivers/media/usb/dvb-usb-v2/Kconfig
++++ b/drivers/media/usb/dvb-usb-v2/Kconfig
+@@ -147,3 +147,10 @@ config DVB_USB_RTL28XXU
+ 	help
+ 	  Say Y here to support the Realtek RTL28xxU DVB USB receiver.
+ 
++config DVB_USB_DVBSKY
++	tristate "DVBSky USB2.0 support"
++	depends on DVB_USB_V2
++	select DVB_M88DS3103 if MEDIA_SUBDRV_AUTOSELECT
++	help
++	  Say Y here to support the USB receivers from DVBSky.
++
+diff --git a/drivers/media/usb/dvb-usb-v2/Makefile b/drivers/media/usb/dvb-usb-v2/Makefile
+index 2c06714..926f12d 100644
+--- a/drivers/media/usb/dvb-usb-v2/Makefile
++++ b/drivers/media/usb/dvb-usb-v2/Makefile
+@@ -40,6 +40,9 @@ obj-$(CONFIG_DVB_USB_MXL111SF) += mxl111sf-tuner.o
+ dvb-usb-rtl28xxu-objs := rtl28xxu.o
+ obj-$(CONFIG_DVB_USB_RTL28XXU) += dvb-usb-rtl28xxu.o
+ 
++dvb-usb-dvbsky-objs := dvbsky.o
++obj-$(CONFIG_DVB_USB_DVBSKY) += dvb-usb-dvbsky.o
++
+ ccflags-y += -I$(srctree)/drivers/media/dvb-core
+ ccflags-y += -I$(srctree)/drivers/media/dvb-frontends
+ ccflags-y += -I$(srctree)/drivers/media/tuners
+diff --git a/drivers/media/usb/dvb-usb-v2/dvbsky.c b/drivers/media/usb/dvb-usb-v2/dvbsky.c
+new file mode 100644
+index 0000000..7380bf1
+--- /dev/null
++++ b/drivers/media/usb/dvb-usb-v2/dvbsky.c
 @@ -0,0 +1,665 @@
 +/*
 + * Driver for DVBSky USB2.0 receiver
@@ -6121,37 +6104,11 @@ diff -urN a/drivers/media/usb/dvb-usb-v2/dvbsky.c b/drivers/media/usb/dvb-usb-v2
 +MODULE_AUTHOR("Max nibble <nibble.max@gmail.com>");
 +MODULE_DESCRIPTION("Driver for DVBSky USB2.0");
 +MODULE_LICENSE("GPL");
-diff -urN a/drivers/media/usb/dvb-usb-v2/Kconfig b/drivers/media/usb/dvb-usb-v2/Kconfig
---- a/drivers/media/usb/dvb-usb-v2/Kconfig	2013-04-29 08:36:01.000000000 +0800
-+++ b/drivers/media/usb/dvb-usb-v2/Kconfig	2013-05-03 17:45:35.000000000 +0800
-@@ -149,3 +149,10 @@
- 	help
- 	  Say Y here to support the Realtek RTL28xxU DVB USB receiver.
- 
-+config DVB_USB_DVBSKY
-+	tristate "DVBSky USB2.0 support"
-+	depends on DVB_USB_V2
-+	select DVB_M88DS3103 if MEDIA_SUBDRV_AUTOSELECT
-+	help
-+	  Say Y here to support the USB receivers from DVBSky.
-+
-diff -urN a/drivers/media/usb/dvb-usb-v2/Makefile b/drivers/media/usb/dvb-usb-v2/Makefile
---- a/drivers/media/usb/dvb-usb-v2/Makefile	2013-04-29 08:36:01.000000000 +0800
-+++ b/drivers/media/usb/dvb-usb-v2/Makefile	2013-02-17 12:03:00.000000000 +0800
-@@ -43,6 +43,9 @@
- dvb-usb-rtl28xxu-objs := rtl28xxu.o
- obj-$(CONFIG_DVB_USB_RTL28XXU) += dvb-usb-rtl28xxu.o
- 
-+dvb-usb-dvbsky-objs := dvbsky.o
-+obj-$(CONFIG_DVB_USB_DVBSKY) += dvb-usb-dvbsky.o
-+
- ccflags-y += -I$(srctree)/drivers/media/dvb-core
- ccflags-y += -I$(srctree)/drivers/media/dvb-frontends
- ccflags-y += -I$(srctree)/drivers/media/tuners
-diff -urN a/include/media/rc-map.h b/include/media/rc-map.h
---- a/include/media/rc-map.h	2013-04-29 08:36:01.000000000 +0800
-+++ b/include/media/rc-map.h	2013-05-03 17:02:46.000000000 +0800
-@@ -118,6 +118,7 @@
+diff --git a/include/media/rc-map.h b/include/media/rc-map.h
+index 5d5d3a3..ca59b52 100644
+--- a/include/media/rc-map.h
++++ b/include/media/rc-map.h
+@@ -118,6 +118,7 @@ void rc_map_init(void);
  #define RC_MAP_DM1105_NEC                "rc-dm1105-nec"
  #define RC_MAP_DNTV_LIVE_DVBT_PRO        "rc-dntv-live-dvbt-pro"
  #define RC_MAP_DNTV_LIVE_DVB_T           "rc-dntv-live-dvb-t"
